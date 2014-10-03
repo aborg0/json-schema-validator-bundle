@@ -28,6 +28,7 @@
 		<festassert.version>1.4</festassert.version>
 		<maven.bundle.plugin.version>2.3.6</maven.bundle.plugin.version>
 		<maven-scr-plugin.version>1.15.0</maven-scr-plugin.version>
+		<libphonenumber.version>6.3</libphonenumber.version>
 	</properties>
 
 	<dependencies>
@@ -37,8 +38,11 @@
 			<version>2.2.5</version>
 			<scope>provided</scope>
 		</dependency>
-		<!-- <dependency> <groupId>com.googlecode.libphonenumber</groupId> <artifactId>libphonenumber</artifactId> 
-			<version>6.0</version> </dependency> -->
+		<dependency>
+			<groupId>com.googlecode.libphonenumber</groupId>
+			<artifactId>libphonenumber</artifactId>
+			<version>${libphonenumber.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
@@ -174,13 +178,12 @@
 					<instructions>
 						<Bundle-Author>Gábor Bakos, Brice Vandeputte</Bundle-Author>
 						<Bundle-Version>${project.version}</Bundle-Version>
-						<Bundle-ClassPath>.,{maven-dependencies},libphonenumber-6.0.jar</Bundle-ClassPath>
-						<Embed-Dependency>libphonenumber</Embed-Dependency>
-						<Include-Resource>{maven-resources},{maven-dependencies},
-							libphonenumber-6.0.jar=src/main/resources/libphonenumber-6.0.jar</Include-Resource>
+						<Bundle-ClassPath>.,{maven-dependencies}</Bundle-ClassPath>
+						<Embed-Dependency>libphonenumber;inline=true</Embed-Dependency>
+						<Include-Resource>{maven-resources}</Include-Resource>
 						<Export-Package>
 							com.github.jsonschemavalidator;version="${project.version}",
-							com.google.i18n.phonenumbers;version="6.0"
+							com.google.i18n.phonenumbers;version="6.3"
 						</Export-Package>
 					</instructions>
 				</configuration>
